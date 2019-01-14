@@ -10,12 +10,14 @@ pipeline {
 
       }
       steps {
-        sh 'env'
-        sh 'npm i'
-        sh 'npm run build'
-        script{
-          echo 'workspace ----------- : '
-          echo WORKSPACE
+        dir ('/tmp/test1') {
+          sh 'env'
+          sh 'npm i'
+          sh 'npm run build'
+          script{
+            echo 'workspace ----------- : '
+            echo WORKSPACE
+          }
         }
       }
     }
