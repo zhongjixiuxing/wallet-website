@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'echo env'
+        sh 'env'
         sh 'npm i'
         sh 'npm run build'
         script{
