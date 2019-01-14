@@ -5,6 +5,7 @@ pipeline {
       agent {
         docker {
           image 'node:8.15'
+          label 'master'
         }
 
       }
