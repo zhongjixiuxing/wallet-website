@@ -5,12 +5,14 @@ pipeline {
       agent {
         docker {
           image 'node:8.15'
-          label 'master'
+          label 'master123'
         }
 
       }
       steps {
         dir ('/tmp/test1') {
+          unstash '/tmp/test1'
+
           sh 'env'
           sh 'npm i'
           sh 'npm run build'
