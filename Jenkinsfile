@@ -11,12 +11,18 @@ pipeline {
       steps {
         sh 'npm i'
         sh 'npm run build'
+        script{
+          echo 'workspace ----------- : '
+          echo WORKSPACE
+        }
       }
     }
     stage('Deploy') {
       agent any
       steps {
         script {
+          echo 'workspace2 ----------- : '
+          echo WORKSPACE
           def deployTo = input(id: 'userInput', message: 'GOOOOOOOOG', parameters: [
             [$class: 'ChoiceParameterDefinition', choices: ["none", "dev(localhost)", "production"], description: "What's the env of you want to deploy?", name: 'deployTo'],
           ])
