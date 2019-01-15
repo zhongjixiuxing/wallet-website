@@ -14,6 +14,7 @@ pipeline {
         sh 'ls -la /tmp'
         script{
           sh 'ls -la ${WORKSPACE}'
+          sh 'ls -la ${JENKINS_HOME}'
           echo WORKSPACE
         }
       }
