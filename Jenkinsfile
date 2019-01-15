@@ -4,7 +4,7 @@ pipeline {
     SHARE_DIR = '/var/jenkins_home/share-temp'
   }
   stages {
-    stage('Install-Pkg') {
+    stage('Build') {
       agent {
         docker {
           image 'node:8.15'
