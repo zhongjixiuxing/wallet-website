@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+    SHARE_DIR = '/var/jenkins_home/share-temp'
+  }
   stages {
     stage('Install-Pkg') {
       agent {
@@ -15,6 +18,8 @@ pipeline {
         script{
           sh 'ls -la ${WORKSPACE}'
           sh 'ls -la /var/jenkins_home'
+          sh 'mkdir -p ${SHARE_DIR}'
+          sh 'cp -R dist ${SHARE_DIR}'
           echo WORKSPACE
         }
       }
@@ -23,8 +28,8 @@ pipeline {
       agent any
       steps {
         script {
-          echo 'workspace2 ----------- : '
-          echo WORKSPACE
+          sh 'cp -R ${SHARE_DIR}/dist .'
+
           def deployTo = input(id: 'userInput', message: 'GOOOOOOOOG', parameters: [
             [$class: 'ChoiceParameterDefinition', choices: ["none", "dev(localhost)", "production"], description: "What's the env of you want to deploy?", name: 'deployTo'],
           ])
@@ -111,13 +116,14 @@ pipeline {
   }
   post {
     success {
+      sh 'rm -rf ${SHARE_DIR}'
       mail(to: '1965198272@qq.com', subject: "successbul: ${currentBuild.fullDisplayName}", body: 'OK')
 
     }
 
     failure {
+      sh 'rm -rf ${SHARE_DIR}'
       mail(to: '1965198272@qq.com', subject: "failure: ${currentBuild.fullDisplayName}", body: 'failure')
-
     }
 
   }
