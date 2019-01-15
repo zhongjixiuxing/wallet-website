@@ -8,13 +8,13 @@ pipeline {
         }
       }
       steps {
-        dir('/tmp/test') {
-          sh 'env'
-          sh 'npm i'
-          sh 'npm run build'
-          script{
-            echo WORKSPACE
-          }
+        sh 'env'
+        sh 'npm i'
+        sh 'npm run build'
+        sh 'ls -la /tmp'
+        script{
+          sh 'ls -la ${WORKSPACE}'
+          echo WORKSPACE
         }
       }
     }
