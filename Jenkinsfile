@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    ws('/tmp/test1') {
+    dir('/tmp/test1') {
       stage('Install-Pkg') {
         agent {
           docker {
