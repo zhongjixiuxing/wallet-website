@@ -96,7 +96,7 @@ pipeline {
 
           def command = deployCfg.customCommand
           if (!command || command == "") {
-            command = "docker run -id --name btc-website -p 6000:80 ${deployCfg.buildImageName}"
+            command = "docker run -id --name btc-website -p 9000:80 ${deployCfg.buildImageName}"
           }
 
           try {
