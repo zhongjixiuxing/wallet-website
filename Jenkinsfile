@@ -116,13 +116,13 @@ pipeline {
   }
   post {
     success {
-      sh 'rm -rf ${SHARE_DIR}'
+      sh 'rm -rf ${SHARE_DIR}/dist'
       mail(to: '1965198272@qq.com', subject: "successbul: ${currentBuild.fullDisplayName}", body: 'OK')
 
     }
 
     failure {
-      sh 'rm -rf ${SHARE_DIR}'
+      sh 'rm -rf ${SHARE_DIR}/dist'
       mail(to: '1965198272@qq.com', subject: "failure: ${currentBuild.fullDisplayName}", body: 'failure')
     }
 
