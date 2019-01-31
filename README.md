@@ -1,1 +1,1 @@
-# [Wallet Website Repo](https://anxing.io/wallet-website/)
+# [Wallet Website Repo](http://anxing.io)
