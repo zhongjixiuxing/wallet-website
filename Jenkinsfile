@@ -1,35 +1,12 @@
 pipeline {
   agent any
   environment {
-    SHARE_DIR = '/var/jenkins_home/share-temp'
   }
   stages {
-    stage('Build') {
-      agent {
-        docker {
-          image 'node:8.15'
-        }
-      }
-      steps {
-        sh 'env'
-        sh 'npm i'
-        sh 'npm run build'
-        sh 'ls -la /tmp'
-        script{
-          sh 'ls -la ${WORKSPACE}'
-          sh 'ls -la /var/jenkins_home'
-          sh 'mkdir -p ${SHARE_DIR}'
-          sh 'cp -R dist ${SHARE_DIR}'
-          echo WORKSPACE
-        }
-      }
-    }
-    stage('Deploy') {
+    stage('Build && Deploy') {
       agent any
       steps {
         script {
-          sh 'cp -R ${SHARE_DIR}/dist .'
-
           def deployTo = input(id: 'userInput', message: 'GOOOOOOOOG', parameters: [
             [$class: 'ChoiceParameterDefinition', choices: ["none", "dev(localhost)", "production"], description: "What's the env of you want to deploy?", name: 'deployTo'],
           ])
