@@ -5,22 +5,23 @@ pipeline {
     stage("Publish") {
       agent any
       steps: {
-        def deployTo = input(id: 'userInput', message: 'GOOOOOOOOG', parameters: [
-          [$class: 'ChoiceParameterDefinition', choices: ["none", "dev(localhost)", "production"], description: "What's the env of you want to deploy?", name: 'deployTo'],
-        ])
+        script {
+          def deployTo = input(id: 'userInput', message: 'GOOOOOOOOG', parameters: [
+            [$class: 'ChoiceParameterDefinition', choices: ["none", "dev(localhost)", "production"], description: "What's the env of you want to deploy?", name: 'deployTo'],
+          ])
 
-        if (deployTo != 'dev(localhost)') {
-          return echo ("deployment[${deployTo}] is un-support at now. nothing to do for the choice")
-        }
+          if (deployTo != 'dev(localhost)') {
+            return echo ("deployment[${deployTo}] is un-support at now. nothing to do for the choice")
+          }
 
-        def deployCfg = [:]
-        deployCfg.sshHost = "47.244.105.11"
-        deployCfg.sshUser = "root"
-        deployCfg.sshPassword = ""
-        deployCfg.customCommand = "docker run -id --name website -p 80:80 anxing131/blockchain-tokens-website"
-        deployCfg.customEnv = ""
+          def deployCfg = [:]
+          deployCfg.sshHost = "47.244.105.11"
+          deployCfg.sshUser = "root"
+          deployCfg.sshPassword = ""
+          deployCfg.customCommand = "docker run -id --name website -p 80:80 anxing131/blockchain-tokens-website"
+          deployCfg.customEnv = ""
 
-        while(true) {
+          while(true) {
             deployCfg = input(id: 'deployCfg', message: 'Publish Configure', parameters: [
               [$class: 'StringParameterDefinition', defaultValue: "${deployCfg.sshHost}", description: "SSH host of deployment server", name: 'sshHost'],
               [$class: 'StringParameterDefinition', defaultValue: "${deployCfg.sshUser}", description: "SSH user name", name: 'sshUser'],
@@ -73,6 +74,7 @@ pipeline {
 
             throw exec
           }
+        }
       }
     }
   }
