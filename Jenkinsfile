@@ -63,8 +63,9 @@ pipeline {
           }
 
           try {
+            sshCommand remote:remote, command:'docker pull anxing131/blockchain-tokens-website'
             sshCommand remote:remote, command:'nohup docker rm -f website &'
-            sshCommand remote:remote, command:'sleep 5 && echo yes'
+            sshCommand remote:remote, command:'sleep 15 && echo yes'
             sshCommand remote:remote, command:command
           } catch (exec) {
             println("happen error")
