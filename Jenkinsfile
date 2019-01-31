@@ -1,10 +1,8 @@
 pipeline {
   agent any
   stages {
-
     stage("Publish") {
-      agent any
-      steps: {
+      steps {
         script {
           def deployTo = input(id: 'userInput', message: 'GOOOOOOOOG', parameters: [
             [$class: 'ChoiceParameterDefinition', choices: ["none", "dev(localhost)", "production"], description: "What's the env of you want to deploy?", name: 'deployTo'],
