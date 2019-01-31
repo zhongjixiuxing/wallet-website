@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 
 <body>
@@ -28,7 +29,9 @@
         <div class="content">
           <div class="logo"> AnXing </div>
           <div class="right">
-            <ul>
+            <i class="fas fa-bars menu-icon" id="menuIcon" onclick="toggleMenu()"></i>
+            <i class="fas fa-times times-icon" id="timesIcon" onclick="toggleMenu()"></i>
+            <ul id="menuContent">
               <li>
                 <a href="https://github.com/zhongjixiuxing/wallet">
                   About-US

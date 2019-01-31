@@ -1,18 +1,22 @@
+var openMenuFlag = false;
+function toggleMenu() {
+  let menuIcon = document.getElementById('menuIcon');
+  let timesIcon = document.getElementById('timesIcon');
+  let menuContent = document.getElementById('menuContent');
+
+  if (openMenuFlag) {
+    menuIcon.style.display = 'none';
+    timesIcon.style.display = 'block';
+    menuContent.style.display = 'flex';
+  } else {
+    menuIcon.style.display = 'block';
+    timesIcon.style.display = 'none';
+    menuContent.style.display = 'none';
+  }
+
+  openMenuFlag = !openMenuFlag;
+}
 
 (() => {
-  // function updateHeaderBg() {
-  //   let index = 1;
-  //   setInterval(() => {
-  //     let dom = document.getElementById('part1Container');
-  //     dom.style.backgroundImage = `url("/img/bg${index}.jpg")`;
-  //     index ++;
-  //
-  //     if (index > 5) {
-  //       index = 1;
-  //     }
-  //
-  //   }, 10000);
-  // }
-
-  // updateHeaderBg();
+  toggleMenu;
 })();
