@@ -109,7 +109,7 @@
           .button {
             position: relative;
             text-align: center;
-            font-size: 39px;
+            font-size: 38px;
             font-family: ‘Raleway’, sans-serif;
             color: #04fb48;
             width: 200px;
@@ -172,6 +172,7 @@
       ul{
         list-style: none;
         bottom: 0;
+        padding: 0;
         li{
           float: left;
           margin: 0 8px;
@@ -358,7 +359,7 @@
           .button {
             position: relative;
             text-align: center;
-            font-size: 39px;
+            font-size: 38px;
             font-family: ‘Raleway’, sans-serif;
             color: #04fb48;
             width: 200px;
@@ -420,6 +421,7 @@
       background: #f1f1f1;
       ul{
         list-style: none;
+        padding: 0;
         bottom: 0;
         li{
           float: left;
